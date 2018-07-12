@@ -1,0 +1,189 @@
+body {
+    padding-bottom: 40px;
+}
+
+.btn-success {
+    background-color: #57a900;
+    background-image: -moz-linear-gradient(top, #70d900, #57a900);
+    background-image: -ms-linear-gradient(top, #70d900, #57a900);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+    background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+    background-image: -o-linear-gradient(top, #70d900, #57a900);
+    background-image: linear-gradient(top, #70d900, #57a900);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+    background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+    background-color: #57a900;
+}
+
+ul.footerLinks {
+    list-style: none;
+}
+
+ul.bm-social {
+    overflow: auto;
+}
+.footer h3, p {
+}
+
+ul.bm-social li {
+    list-style-type: none;
+    float: left;
+
+}
+
+ul.bm-social li a i {
+    background: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 25px;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 15%;
+
+}
+
+body > .footer, html {
+    background-color: #000;
+    color: white;
+    min-height: 200px;
+    padding-top: 20px;
+    margin-bottom: -200px;
+}
+
+.footerLinks a, .headerLinks a {
+    color: white;
+}
+
+.indent {
+    margin-left: 80px;
+}
+
+.cultural {
+    background-color: #F5F5F5;
+    padding: 20px;
+}
+
+#objects {
+    background-color: #fff;
+}
+
+.thumbnail {
+    border: none;
+
+}
+
+.caption {
+    margin-top: -18px;
+    background-color: #F5F5F5;
+    margin-bottom: 20px;
+}
+
+.caption h4 {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+#first {
+    margin-top: 70px;
+}
+
+.container-fluid {
+    margin-top: 0px;
+    padding-bottom: 0px;
+}
+
+ul.headerLinks {
+    padding-top: 10px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+#frontpage {
+    background: url('/img/bmNe.jpg') no-repeat center center;
+    min-height: 500px;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#frontpage h1 {
+    color: white;
+    font-weight: 600;
+    font-size: 60px;
+    margin-top: 200px;
+
+}
+
+body > .navbar {
+    background-color: black;
+    color: white;
+    margin-bottom: 0px;
+    height: 100px;
+}
+
+.not-found {
+    padding-left: 60px;
+    margin-top: 0px;
+}
+
+.navbar-nav > .gravatar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.float-none {
+    float: none;
+}
+
+div#headerLogo p a {
+    background: url("/img/bmLogo.png") no-repeat scroll 0 0px transparent;
+    height: 64px;
+    margin: 0 0 0 60px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 22px;
+    width: 214px;
+    text-indent: -9999px
+}
+
+div#headerLogo h1 a:focus, div#headerLogo h1 a:hover, div#headerLogo p a:focus, div#headerLogo p a:hover {
+    background-position: 0 0 px;
+}
+.onBlack a {
+    color: #000;
+}
+#row2 {
+    color: #fff;
+    background-color: #000;
+}
+.gravatar {
+    margin-bottom: 10px;
+}
+
+
+#map-canvas {
+    width:100%;
+    height:300px;
+}
+
+.inset {
+    padding-left: 60px;
+}

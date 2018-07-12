@@ -1,0 +1,45 @@
+{
+  "name": "mmguide",
+  "description": "Multimedia Guide visit tracker: British Museum",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "framework",
+    "zf2"
+  ],
+  "homepage": "http://myvisit.britishmuseum.org",
+  "authors": [
+    {
+      "name": "Daniel Pett",
+      "email": "dpett@britishmuseum.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.3",
+    "zendframework/zendframework": ">=2.2.4",
+    "incraigulous/contentful-sdk": "0.0.*",
+    "acelaya/zf2-acmailer": "~5.0",
+    "tasmaniski/zf2-config-helper": "1.0.*",
+    "stroker/cache": "*",
+    "slm/google-analytics": "~0.4",
+    "tasmaniski/zf2-params-helper": "1.0.*",
+    "dtome/cookie-policy": "dev-master",
+    "nikolaposa/zf-open-graph": "1.*"
+  },
+  "require-dev": {
+    "zfcampus/zf-apigility-admin": "~1.2",
+    "zfcampus/zf-development-mode": "~2.0",
+    "zendframework/zftool": "dev-master",
+    "zendframework/zend-developer-tools":"dev-master",
+    "bjyoungblood/bjy-profiler": "1.1.0"
+  },
+  "autoload" : {
+     "psr-0": {
+       "Api": "module/Api/src",
+       "Myvisit": "module/Myvisit/src",
+       "Application": "module/Application/src"
+     },
+    "psr-4":{
+      "cookiepolicy\\" : "vendor/dtome/cookie-policy"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="col-sm-6 col-md-3 <?php echo $this->data['cultureID']; ?> ">
+    <div class="thumbnail">
+        <img
+            data-original="https:<?php echo $this->data['thumbnail']['file']['url']; ?>"
+            alt="<?php echo $this->data['title']; ?>"
+            width="<?php echo $this->data['thumbnail']['file']['details']['image']['width']; ?>"
+            height="<?php echo $this->data['thumbnail']['file']['details']['image']['height']; ?>"
+            class="lazy"
+            >
+    </div>
+
+    <div class="caption" style="border-bottom: solid 5px <?php echo $this->data['culture']['colour']; ?>">
+        <h4>
+            <?php echo $this->data['stop']; ?>
+            <?php echo $this->data['title']; ?>
+        </h4>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<?php $this->placeholder('dateVisit')->captureStart(); ?>
+My visit<br />
+<?php echo $this->datetime(strtotime($visits->created), 'D-M-Y'); ?>
+<?php $this->placeholder('dateVisit')->captureEnd(); ?>
+
+<?php $this->placeholder('gravatar')->captureStart(); ?>
+
+<?php
+echo $this->gravatar()->setEmail($visits->email)
+    ->setImgSize(50)
+    ->setAttribs(array('class' => 'img-circle pull-right gravatar'))
+    ->getImgTag();
+?>
+<?php $this->placeholder('gravatar')->captureEnd(); ?>
+<div class="container-fluid" id="first">
+    <?php
+    $this->openGraph()->setType('Website')
+        ->setLocale($visits->locale)
+        ->setDescription('Details of your visit to the British Museum using the audio guide')
+        ->setIndent(4);
+    ?>
+    <?php
+    $this->headMeta()->appendName('twitter:title', 'My visit to the British Museum')
+        ->appendName('twitter:site', '@britishmuseum')
+        ->appendName('twitter:creator', '@britishmuseum')
+        ->appendName('twitter:description', 'Details of your visit to the British Museum using the audio guide')
+        ->appendName('twitter:card', 'summary_large_image')
+        ->setIndent(4);
+    ?>
+
+    <h2 class="text-center">Thank you for visiting the British Museum and using the audio guide</h2>
+
+</div>
+
+<div class="container-fluid">
+    <div class="center-block col-md-8 float-none" id="donutPlaceholder">
+<!--        <span class="donut"></span>-->
+        <div id="donut"></div>
+
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="center-block col-md-8 float-none">
+        <h3 class="text-center">Your favourite section today was</h3>
+
+        <h3 class="text-center" id="topArea"></h3>
+    </div>
+</div>
+
+<div class="container-fluid cultural">
+    <h3 class="lead text-center">The top 5 cultural areas</h3>
+
+    <div class="center-block col-md-8 float-none" id="bar">
+        <span class="bar"></span>
+    </div>
+</div>
+
+<div class="container" id="objects">
+    <h3 class="text-center">The objects you saw</h3>
+    <?php $stops = json_decode($visits->stops); ?>
+    <?php $first = array_slice($stops, 0, 1); ?>
+    <?php $data = $this->contentfulRecordHelper()->setSysID($first[0]->stop_id)->setLocale($visits->locale)->setAssets(3)->getContentful(); ?>
+    <?php $this->openGraph()->appendImage(array('https:' . $data['thumbnail']['file']['url'], 'width' => 300, 'height' => 300)); ?>
+    <?php $this->headMeta()->appendName('twitter:image', 'https:' . $data['large']['file']['url']); ?>
+    <?php foreach ($stops as $stop): ?>
+        <?php
+        echo $this->contentfulRecordHelper()->setSysID($stop->stop_id)->setLocale($visits->locale)->setAssets(3);
+        ?>
+    <?php endforeach; ?>
+</div>
+<?php $this->headScript()->appendFile('https://maps.googleapis.com/maps/api/js?version=3.8&amp;key=AIzaSyAuDyFnm7-ea4Ls_OmCThLmL0Su42oiGNk&amp;sensor=false');?>
+<?php $this->inlineScript()->prependFile($this->basePath('/js/jquery.piety.js')); ?>
+<?php $this->inlineScript()->prependFile($this->basePath('/js/raphael/g.pie.js'));?>
+<?php $this->inlineScript()->prependFile($this->basePath('/js/raphael/g.raphael.js'));?>
+<?php $this->inlineScript()->prependFile($this->basePath('/js/raphael/g.raphael.min.js'));?>
+
+<?php $this->inlineScript()->appendFile('../js/graphsAndCounts.js'); ?>
+<?php $this->inlineScript()->appendFile($this->basePath('js/map.js'));?>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Where did I find this?</h4>
+            </div>
+            <div class="modal-body">
+                <img id="modalStreet" width="100%"/>
+
+                <div id="map-canvas"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

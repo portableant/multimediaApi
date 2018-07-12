@@ -1,0 +1,124 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?php
+    echo $this->headTitle($this->translate('My visit to the British Museum'))->setSeparator(' - ')->setAutoEscape(false);
+    ?>
+
+    <?php
+    echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+    ?>
+
+    <!-- Styles -->
+    <?php
+    echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('css/cookieStyle.css'))
+        ->setIndent(4); ?>
+
+    <!-- Scripts -->
+    <?php
+    echo $this->headScript()
+        ->prependFile('//assets.adobedtm.com/4792b6ab91abad9ac055719400b34dafe9d4a230/satelliteLib-598908df6026062f167c09e575417fced56f33ee.js')
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+        ->setIndent(4);
+    $this->inlineScript()->appendFile($this->basePath('js/cookieJs.js'))
+        ->appendFile($this->basePath('js/cookieConfig.js'))
+        ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js');
+    ?>
+
+</head>
+<body class="onBlack">
+<!-- Navigation -->
+<nav class="navbar navbar-static-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="col-md-4" id="headerLogo">
+            <p><a class="navbar-brand" href="<?php echo $this->url('home') ?>" title="Home" id="ga-home-logo"
+                  tabindex="3">The British Museum</a></p>
+        </div>
+    </div>
+    <!--/.nav-collapse -->
+</nav>
+<!-- End of navigation -->
+<div class="container-fluid" id="row2">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <span class="pull-right"><?php echo $this->placeholder('gravatar'); ?></span>
+
+            <p><?php echo $this->placeholder('dateVisit'); ?></p>
+
+        </div>
+    </div>
+</div>
+
+<?php echo $this->content; ?>
+
+<!-- Footer -->
+<div class="container-fluid footer">
+    <div class="row">
+        <div class="col-md-6 inset">
+            <div class="follow">
+                <h3>Follow the British Museum</h3>
+                <ul class="bm-social">
+
+                    <li><a href="http://www.facebook.com/britishmuseum" title="Facebook"><i
+                                class="fa fa-2x fa-facebook"></i></a></li>
+                    <li><a href="http://twitter.com/britishmuseum" title="Twitter"><i
+                                class="fa fa-2x fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/103128144782058926318/posts" title="Google+"><i
+                                class="fa fa-2x fa-google-plus"></i></a></li>
+                    <li><a href="http://www.youtube.com/user/britishmuseum" title="YouTube"><i
+                                class="fa fa-2x fa-youtube "></i></a></li>
+                    <li><a href="https://soundcloud.com/britishmuseum" title="SoundCloud"><i
+                                class="fa  fa-soundcloud"></i></a></li>
+                    <li><a href="http://www.pinterest.com/britishmuseum/" title="Pinterest"><i
+                                class="fa fa-2x fa-pinterest"></i></a></li>
+                    <li><a href="http://instagram.com/britishmuseum/" title="Instagram"><i
+                                class="fa fa-2x fa-instagram"></i></a></li>
+                    <li><a href="http://britishmuseum.tumblr.com/" title="RSS"><i class="fa fa-2x fa-tumblr"></i></a>
+                    </li>
+                    <li><a href="http://blog.britishmuseum.org/feed" title="RSS"><i
+                                class="fa fa-2x fa-rss"></i></a></li>
+
+                </ul>
+                <p id="copyright">© Trustees of the British Museum</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo $this->cookiePolicy(); ?>
+<!-- End of footer -->
+<?php echo $this->inlineScript(); ?>
+<script type="text/javascript">
+    _satellite.pageBottom();
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var digitalData = {};
+        // social follow clicks...
+        $(document).on('click', '#footer ul.bm-social li a', function () {
+            digitalData.socialLink = $(this).attr('title');
+            console.log(digitalData);
+            _satellite.track('sociallink');
+        });
+    });
+</script>
+</body>
+</html>
